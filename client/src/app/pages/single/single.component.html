@@ -1,0 +1,17 @@
+<h1>{{ singleproduct?.name }}</h1>
+<div class="card w-25 h-25 bg-dark text-white border-white ">
+  <img
+    src="http://localhost:3000/{{ singleproduct?.mainImage }}"
+    class="card-img-top"
+    alt="..."
+  />
+  <div class="card-body">
+    <h5 class="card-title text-warning text-center">{{ singleproduct?.name }}</h5>
+    <p class="card-text text-light">
+      Some quick example text to build on the card title and make up the bulk of
+      the card's content.
+    </p>
+  </div>
+  
+  <button class="w-50 d-block mx-auto  mb-3 btn btn-outline-warning  rounded-pill" (click)="deleteProduct()" *ngIf="admin">delete Product</button>
+</div>

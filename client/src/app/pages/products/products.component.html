@@ -1,0 +1,25 @@
+
+<div *ngIf="loading ; else data" >
+    <img  src="assets/images/giphy.gif" class="img-fluid rounded mx-auto d-block">
+</div>
+ 
+<ng-template #data>
+    <div class="row "  >
+     
+        <div class="col-4" *ngFor="let product of products" >
+        <div class="card  bg-dark text-white border-white" >
+            <img src="{{apiUrl}}{{product.mainImage}}" class="card-img-top"  alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-warning text-center" >{{product.name}}</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <div class="d-flex justify-content-evenly">
+
+                <button class="btn btn-outline-primary " [routerLink]="['/Products/',product._id]">Show Details</button>
+                <button class="btn ms-2 btn-outline-light" *ngIf="!isAdmin" (click)="addToCart(product)">Add To Cart</button>
+                <button class="btn btn-danger ms-2" *ngIf="isAdmin" (click)="deleteProduct(product._id)">Remove</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+</ng-template>

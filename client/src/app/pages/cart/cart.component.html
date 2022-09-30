@@ -1,0 +1,30 @@
+<div *ngIf="productInCart.length > 0; else empty">
+    <ul class="list-group ">
+        <li class="border mb-2 list-group-item bg-dark border border-white border-2 text-white" *ngFor="let item of productInCart" >
+            <div class="d-flex justify-content-between flex-wrap">
+                <div class="w-50">
+                    <label for="" class="text-warning">Name</label><h5>{{item.product.name}}</h5>
+                    <label for=""class="text-warning">Price</label><h5>{{item.product.price}}</h5>
+                    <label for=""class="text-warning">Size</label><h5>{{item.product.size}}</h5>
+                    <label for=""class="text-warning">Description</label><h5>{{item.product.description}}</h5>
+                    <label for=""class="text-warning">Quantity</label><h5>{{item.quantity}}</h5>
+
+                </div>
+                <div class=" w-50 ">
+                    <img src="{{apiUrl}}{{item.product.mainImage}}" class="w-100 h-100 " alt="">
+                </div> 
+                <div class="w-100">
+                <button class="  me-auto btn btn-outline-warning  mb-1" (click)="removeFromCart(item._id)">Remove</button>
+
+                </div>
+            </div>
+        </li>
+    </ul>
+    
+    <div class="text-center ">
+        <button class="btn btn-outline-warning " (click)="clearCart()">Remove All items</button>
+    </div>
+</div>
+<ng-template #empty>
+    <h1>No products in cart</h1>
+</ng-template>
